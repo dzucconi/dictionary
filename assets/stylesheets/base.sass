@@ -1,0 +1,46 @@
+$fs: 40px
+$lh: 50px
+
++global-reset()
+
+html
+  +box-sizing(border-box)
+
+*,
+*:before,
+*:after
+  box-sizing: inherit
+
+html
+  &.red > body
+    background-color: red
+  &.blue > body
+    background-color: blue
+
+html,
+body
+  height: 100%
+
+body
+  color: white
+  font-size: $fs
+  font-family: sans-serif
+  line-height: $lh
+  text-rendering: optimizeLegibility
+  text-transform: uppercase
+  letter-spacing: 1px
+  -webkit-font-smoothing: antialiased
+  overflow: hidden
+  @media (max-width: 640px)
+    // TODO
+
+.stage
+  +display-flex(flex)
+  +flex-direction(column)
+  +justify-content(flex-end)
+  height: 100%
+  padding: $lh
+
+span
+  display: inline-block
+  margin: ($lh / 2)
