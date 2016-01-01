@@ -1,5 +1,6 @@
 $fs: 40px
 $lh: 50px
+$breakpoint: 640px
 
 +global-reset()
 
@@ -31,8 +32,9 @@ body
   letter-spacing: 1px
   -webkit-font-smoothing: antialiased
   overflow: hidden
-  @media (max-width: 640px)
-    // TODO
+  @media (max-width: $breakpoint)
+    font-size: $fs / 2
+    line-height: $lh / 2
 
 .stage
   +display-flex(flex)
@@ -40,6 +42,8 @@ body
   +justify-content(flex-end)
   height: 100%
   padding: $lh
+  @media (max-width: $breakpoint)
+    padding: $lh / 4
 
 span
   display: inline-block
