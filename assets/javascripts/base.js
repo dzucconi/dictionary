@@ -27,7 +27,7 @@
   function trim() {
     return $('span').map(function() {
       var $this = $(this);
-      if ($this.offset().top < CUTOFF) $this.remove();
+      if ($this.offset().top <= CUTOFF) $this.remove();
     });
   };
 
