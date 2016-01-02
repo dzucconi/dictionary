@@ -7,10 +7,16 @@ class Application < Sinatra::Base
   register Sinatra::AssetPipeline
 
   get '/' do
-    HTML.new.page do
-      HTML.new.div(class: 'stage js-stage') {
-        Chain.take(params[:n]).map { |x| HTML.new.span { x } }.join('')
-      }
+    HTML.new.instance_eval do
+      page do
+        audio(class: 'js-audio') do
+          source(type: 'audio/wav', class: 'js-source')
+        end +
+
+        div(class: 'stage js-stage') do
+          Chain.take.map { |x| span { x } }.join('')
+        end
+      end
     end
   end
 

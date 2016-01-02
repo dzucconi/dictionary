@@ -2,7 +2,7 @@
   'use strict';
 
   var QUEUE = [];
-  var SPEED = 50;
+  var SPEED = 75;
   var CUTOFF = 50;
   var DOM = {
     $window: $(window),
@@ -54,8 +54,20 @@
     return dfd.promise();
   };
 
+  function play(line) {
+    var $audio, $source;
+
+    $audio = $('.js-audio');
+    $source = $('.js-source');
+
+    $source.attr('src', 'http://damonzucconi-synthetic-tongue.herokuapp.com/render?text=' + encodeURIComponent(line));
+    $audio[0].load();
+    $audio[0].play();
+  };
+
   function run($el) {
     next().then(function(line) {
+      if (location.search.indexOf('speak') > -1) play(line);
       append($el, line);
       setTimeout(run.bind(null, $el), timeOf(line));
     }).fail(function() {
