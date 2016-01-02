@@ -6,27 +6,16 @@ class Application < Sinatra::Base
 
   register Sinatra::AssetPipeline
 
-  helpers do
-    def verse(n = 1)
-      n = n.to_i
-      n = 1 if n.zero?
-      fragments = CHAIN.generate_n_sentences(n).downcase.split(/,|;/)
-      [fragments].flatten.map { |fragment|
-        fragment.strip.gsub(/\W$/, '')
-      }
-    end
-  end
-
   get '/' do
     HTML.new.page do
       HTML.new.div(class: 'stage js-stage') {
-        verse(params[:n]).map { |x| HTML.new.span { x } }.join('')
+        Chain.take(params[:n]).map { |x| HTML.new.span { x } }.join('')
       }
     end
   end
 
   get '/verse' do
     content_type :json, 'charset' => 'utf-8'
-    verse(params[:n]).to_json
+    Chain.take(params[:n]).to_json
   end
 end

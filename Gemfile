@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 gem 'puma'
 gem 'sinatra'
-gem 'marky_markov'
 gem 'sinatra-asset-pipeline'
 gem 'compass'
 gem 'uglifier'
