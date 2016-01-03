@@ -2,7 +2,7 @@
   'use strict';
 
   var QUEUE = [];
-  var SPEED = 75;
+  var SPEED = 100;
   var CUTOFF = 50;
   var DOM = {
     $window: $(window),
