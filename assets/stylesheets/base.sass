@@ -44,14 +44,16 @@ body
     line-height: $lh / 2
 
 .stage
-  display: none
+  +display-flex(flex)
   +flex-direction(column)
   height: 100%
   padding: $lh
+  +opacity(0)
+  +transition(opacity 0.5s)
   @media (max-width: $breakpoint)
     padding: $lh / 4
   &[data-state='running']
-    +display-flex(flex)
+    +opacity(1)
 
 span
   display: inline-block

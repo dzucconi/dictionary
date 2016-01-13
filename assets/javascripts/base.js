@@ -105,6 +105,9 @@
   }
 
   $(function() {
-    run($('.js-stage').attr('data-state', 'running'));
+    trim();
+    setTimeout(function() {
+      run($('.js-stage').attr('data-state', 'running'));
+    }, 1);
   });
 })();
