@@ -105,6 +105,6 @@
   }
 
   $(function() {
-    run($('.js-stage').show());
+    run($('.js-stage').attr('data-state', 'running'));
   });
 })();

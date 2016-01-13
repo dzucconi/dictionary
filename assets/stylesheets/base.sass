@@ -45,12 +45,13 @@ body
 
 .stage
   display: none
-  +display-flex(flex)
   +flex-direction(column)
   height: 100%
   padding: $lh
   @media (max-width: $breakpoint)
     padding: $lh / 4
+  &[data-state='running']
+    +display-flex(flex)
 
 span
   display: inline-block
