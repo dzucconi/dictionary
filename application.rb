@@ -22,6 +22,6 @@ class Application < Sinatra::Base
 
   get '/verse' do
     content_type :json, 'charset' => 'utf-8'
-    Chain.take(params[:n]).to_json
+    Chain.take(params[:n].to_i).to_json
   end
 end
