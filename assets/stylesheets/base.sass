@@ -13,12 +13,17 @@ html
   box-sizing: inherit
 
 html
-  &.red > body
+  &[data-color='red'] > body
     background-color: red
-  &.blue > body
+  &[data-color='blue'] > body
     background-color: blue
-  &.black > body
+  &[data-color='black'] > body
     background-color: black
+
+  &[data-direction='up'] .stage
+    +justify-content(flex-end)
+  &[data-direction='down'] .stage
+    +justify-content(flex-start)
 
 html,
 body
@@ -41,7 +46,6 @@ body
 .stage
   +display-flex(flex)
   +flex-direction(column)
-  +justify-content(flex-end)
   height: 100%
   padding: $lh
   @media (max-width: $breakpoint)

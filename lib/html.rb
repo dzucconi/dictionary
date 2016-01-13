@@ -2,7 +2,7 @@ class HTML
   include Sprockets::Helpers
 
   def method_missing(type, attributes = {})
-    tag(type, attributes, (block_given? ? yield.to_s : nil))
+    tag type, attributes, block_given? ? yield.to_s : nil
   end
 
   def tag(type, attributes, content)
@@ -17,7 +17,7 @@ class HTML
 
   def page
     '<!doctype html>' +
-    html(class: ENV['COLOR']) {
+    html('data-color': ENV['COLOR'], 'data-direction': ENV['DIRECTION'], 'data-speed': ENV['SPEED']) {
       head {
         meta(charset: 'utf-8') +
         meta('http-equiv' => 'X-UA-Compatible', content: 'IE=edge,chrome=1') +
@@ -30,7 +30,8 @@ class HTML
         script(src: javascript_path('application'), type: 'text/javascript') {}
       } +
       body {
-        yield + Analytics.new.tag(ENV['TRACKING_ID'])
+        yield +
+        Analytics.new.tag(ENV['TRACKING_ID'])
       }
     }
   end

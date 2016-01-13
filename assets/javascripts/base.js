@@ -2,12 +2,18 @@
   'use strict';
 
   var QUEUE = [];
-  var SPEED = 100;
   var CUTOFF = 50;
   var DOM = {
+    $html: $('html'),
     $window: $(window),
     $document: $(document)
   };
+
+  var ENV = DOM.$html.data();
+
+  var SPEED = ENV.speed;
+  var DIRECTION = ENV.direction;
+  var COLOR = ENV.color;
 
   function replenish() {
     return $.getJSON('/verse').then(function(lines) {
@@ -26,14 +32,29 @@
 
   function trim() {
     return $('span').map(function() {
-      var $this = $(this);
-      if ($this.offset().top <= CUTOFF) $this.remove();
+      var $this, bottom;
+
+      $this = $(this);
+
+      switch(DIRECTION) {
+        case 'up':
+          if ($this.offset().top <= CUTOFF) $this.remove();
+          break;
+        case 'down':
+          if ($this.offset().top + $this.height() >= DOM.$window.height() - CUTOFF) $this.remove();
+          break;
+      };
     });
   };
 
   function append($el, line) {
     $el.append('<span>' + line + '</span>');
     down();
+    trim();
+  };
+
+  function prepend($el, line) {
+    $el.prepend('<span>' + line + '</span>');
     trim();
   };
 
@@ -68,7 +89,15 @@
   function run($el) {
     next().then(function(line) {
       if (location.search.indexOf('speak') > -1) play(line);
-      append($el, line);
+
+      switch(DIRECTION) {
+        case 'up':
+          append($el, line);
+          break;
+        case 'down':
+          prepend($el, line);
+          break;
+      };
       setTimeout(run.bind(null, $el), timeOf(line));
     }).fail(function() {
       setTimeout(run.bind(null, $el), SPEED * 100);

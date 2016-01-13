@@ -14,7 +14,7 @@ class Application < Sinatra::Base
         end +
 
         div(class: 'stage js-stage') do
-          Chain.take.map { |x| span { x } }.join('')
+          # Rendered client-side
         end
       end
     end

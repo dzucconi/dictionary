@@ -8,7 +8,7 @@ gem 'compass'
 gem 'uglifier'
 gem 'sass'
 
-group :development do
+group :development, :test do
   gem 'tux'
   gem 'byebug'
 end
