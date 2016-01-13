@@ -25,4 +25,8 @@ class Application < Sinatra::Base
     content_type :json, 'charset' => 'utf-8'
     Chain.take(params[:n].to_i).to_json
   end
+
+  get '/robots.txt', provides: :txt do
+    ['User-agent: *', 'Disallow:'].join("\n")
+  end
 end
