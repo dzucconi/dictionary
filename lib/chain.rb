@@ -14,7 +14,7 @@ class Chain
   def self.take(n = 1)
     n = n.nil? || n.zero? ? 1 : n
     lines = File.readlines(SOURCE).sample(n).map { |line|
-      line.downcase.split(';')
+      line.downcase.split(';').sample
     }.flatten.map(&:strip).take(n)
   end
 end
