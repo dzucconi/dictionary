@@ -16,7 +16,7 @@
   var COLOR = ENV.color;
 
   function replenish() {
-    return $.getJSON('/verse').then(function(lines) {
+    return $.getJSON('/verse', { n: 10 }).then(function(lines) {
       QUEUE = QUEUE.concat(lines);
       return QUEUE;
     });
@@ -75,21 +75,8 @@
     return dfd.promise();
   };
 
-  function play(line) {
-    var $audio, $source;
-
-    $audio = $('.js-audio');
-    $source = $('.js-source');
-
-    $source.attr('src', 'http://damonzucconi-synthetic-tongue.herokuapp.com/render?text=' + encodeURIComponent(line));
-    $audio[0].load();
-    $audio[0].play();
-  };
-
   function run($el) {
     next().then(function(line) {
-      if (location.search.indexOf('speak') > -1) play(line);
-
       switch(DIRECTION) {
         case 'up':
           append($el, line);

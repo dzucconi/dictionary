@@ -10,10 +10,6 @@ class Application < Sinatra::Base
   get '/' do
     HTML.new.instance_eval do
       page do
-        audio(class: 'js-audio') do
-          source(type: 'audio/wav', class: 'js-source')
-        end +
-
         div(class: 'stage js-stage') do
           Chain.take(20).map { |x| span { x } }.join('')
         end
