@@ -29,12 +29,12 @@ class HTML
 
         link(rel: 'apple-touch-icon', href: image_path("#{ENV['COLOR']}.png")) +
         link(rel: 'icon', href: image_path("#{ENV['COLOR']}.ico")) +
-        link(rel: 'stylesheet', type: 'text/css', href: stylesheet_path('application')) +
-
-        script(src: javascript_path('application'), type: 'text/javascript') {}
+        link(rel: 'stylesheet', type: 'text/css', href: stylesheet_path('application'))
       } +
       body {
         yield +
+
+        script(src: javascript_path('application'), type: 'text/javascript') {} +
         Analytics.new.tag(ENV['TRACKING_ID'])
       }
     }

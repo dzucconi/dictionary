@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var QUEUE = [];
+  var QUEUE = window.__QUEUE__;
   var CUTOFF = 50;
   var DOM = {
     $html: $('html'),
@@ -75,16 +75,20 @@
     return dfd.promise();
   };
 
+  function insert($el, line) {
+    switch(DIRECTION) {
+      case 'up':
+        append($el, line);
+        break;
+      case 'down':
+        prepend($el, line);
+        break;
+    };
+  }
+
   function run($el) {
     next().then(function(line) {
-      switch(DIRECTION) {
-        case 'up':
-          append($el, line);
-          break;
-        case 'down':
-          prepend($el, line);
-          break;
-      };
+      insert($el, line);
       setTimeout(run.bind(null, $el), timeOf(line));
     }).fail(function() {
       setTimeout(run.bind(null, $el), SPEED * 100);
@@ -92,9 +96,14 @@
   }
 
   $(function() {
-    trim();
-    setTimeout(function() {
-      run($('.js-stage').attr('data-state', 'running'));
-    }, 1);
+    var $stage = $('.js-stage');
+
+    QUEUE.map(function() {
+      next().then(function(line) {
+        insert($stage, line);
+      });
+    });
+
+    run($stage.attr('data-state', 'running'));
   });
 })();

@@ -7,10 +7,20 @@ class Application < Sinatra::Base
   register Sinatra::AssetPipeline
 
   get '/' do
+    lines = Chain.take 20
+
     HTML.new.instance_eval do
       page do
-        div(class: 'stage js-stage') do
-          Chain.take(20).map { |x| span { x } }.join('')
+        noscript do
+          div(class: 'stage js-stage', 'data-state': 'running') do
+            a(href: '/') { lines.first }
+          end
+        end +
+
+        div(class: 'stage js-stage') {} +
+
+        script do
+          "window.__QUEUE__ = #{lines.to_json}"
         end
       end
     end
