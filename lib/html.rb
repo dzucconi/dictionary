@@ -24,9 +24,13 @@ class HTML
         meta(name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=0') +
         meta(name: 'apple-mobile-web-app-capable', content: 'yes') +
         meta(name: 'apple-mobile-web-app-status-bar-style', content: 'black') +
+
         title { "dictionary.#{ENV['COLOR']}" } +
+
+        link(rel: 'apple-touch-icon', href: image_path("#{ENV['COLOR']}.png")) +
         link(rel: 'icon', href: image_path("#{ENV['COLOR']}.ico")) +
         link(rel: 'stylesheet', type: 'text/css', href: stylesheet_path('application')) +
+
         script(src: javascript_path('application'), type: 'text/javascript') {}
       } +
       body {
