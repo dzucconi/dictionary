@@ -1,11 +1,11 @@
 class Chain
   CHAINS = {
-    red: 'data.verb',
-    blue: 'data.noun',
-    black: 'data.adj'
+    red: :verb,
+    blue: :noun,
+    black: :adj
   }
 
-  SOURCE = File.expand_path("../chain/#{CHAINS[ENV['COLOR'].to_sym]}", __FILE__)
+  SOURCE = File.expand_path("../chain/data.#{CHAINS[ENV['COLOR'].to_sym]}", __FILE__)
 
   def self.color
     ENV['COLOR'].to_sym
