@@ -12,8 +12,10 @@ class Application < Sinatra::Base
     HTML.new.instance_eval do
       page do
         noscript do
-          div(class: 'stage js-stage', 'data-state': 'running') do
-            a(href: '/') { lines.first }
+          div(class: 'theatre') do
+            div(class: 'stage js-stage', 'data-state': 'running') do
+              a(href: '/') { lines.first }
+            end
           end
         end +
 
