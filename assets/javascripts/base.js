@@ -10,11 +10,14 @@
     $stage: $('.js-stage')
   };
 
-  var CUTOFF = DOM.$stage.offset().top;
   var ENV = DOM.$html.data();
   var SPEED = ENV.speed;
   var DIRECTION = ENV.direction;
   var COLOR = ENV.color;
+
+  function cutoff() {
+    return DOM.$stage.offset().top;
+  };
 
   function replenish() {
     return $.getJSON('/verse', { n: 10 }).then(function(lines) {
@@ -39,10 +42,10 @@
 
       switch(DIRECTION) {
         case 'up':
-          if ($this.offset().top <= CUTOFF) $this.remove();
+          if ($this.offset().top <= cutoff()) $this.remove();
           break;
         case 'down':
-          if ($this.offset().top + $this.height() >= DOM.$window.height() - CUTOFF) $this.remove();
+          if ($this.offset().top + $this.height() >= DOM.$window.height() - cutoff()) $this.remove();
           break;
       };
     });
@@ -97,14 +100,12 @@
   }
 
   $(function() {
-    var $stage = $('.js-stage');
-
     QUEUE.map(function() {
       next().then(function(line) {
-        insert($stage, line);
+        insert(DOM.$stage, line);
       });
     });
 
-    run($stage.attr('data-state', 'running'));
+    run(DOM.$stage.attr('data-state', 'running'));
   });
 })();
