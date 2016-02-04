@@ -2,15 +2,16 @@
   'use strict';
 
   var QUEUE = window.__QUEUE__;
-  var CUTOFF = 50;
+
   var DOM = {
     $html: $('html'),
     $window: $(window),
-    $document: $(document)
+    $document: $(document),
+    $stage: $('.js-stage')
   };
 
+  var CUTOFF = DOM.$stage.offset().top;
   var ENV = DOM.$html.data();
-
   var SPEED = ENV.speed;
   var DIRECTION = ENV.direction;
   var COLOR = ENV.color;

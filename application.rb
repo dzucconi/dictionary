@@ -17,10 +17,12 @@ class Application < Sinatra::Base
           end
         end +
 
-        div(class: 'stage js-stage') {} +
+        div(class: 'theatre') do
+          div(class: 'stage js-stage') {}
+        end +
 
         script do
-          "window.__QUEUE__ = #{lines.to_json}"
+          "window.__QUEUE__ = #{lines.to_json};"
         end
       end
     end
