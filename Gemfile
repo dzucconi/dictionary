@@ -7,6 +7,7 @@ gem 'sinatra-asset-pipeline'
 gem 'compass'
 gem 'uglifier'
 gem 'sass'
+gem 'rubypants'
 
 group :development, :test do
   gem 'tux'

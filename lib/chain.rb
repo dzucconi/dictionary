@@ -13,8 +13,12 @@ class Chain
 
   def self.take(n = 1)
     n = n.nil? || n.zero? ? 1 : n
+
     lines = File.readlines(SOURCE).sample(n).map { |line|
       line.downcase.split(';').sample
-    }.flatten.map(&:strip).take(n)
+    }
+      .flatten
+      .map { |x| RubyPants.new(x.strip).to_html }
+      .take(n)
   end
 end
