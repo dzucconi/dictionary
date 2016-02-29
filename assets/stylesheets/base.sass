@@ -14,14 +14,25 @@ html
 
 html
   &[data-color='red'] > body
+    color: white
+    background-color: red
+  &[data-color='red'][data-invert='true'] > body
     color: red
     background-color: white
+
   &[data-color='blue'] > body
+    color: white
+    background-color: blue
+  &[data-color='blue'][data-invert='true'] > body
     color: blue
     background-color: white
+
   &[data-color='black'] > body
     color: white
     background-color: black
+  &[data-color='black'][data-invert='true'] > body
+    color: black
+    background-color: white
 
   &[data-direction='up'] .stage
     vertical-align: bottom

@@ -17,7 +17,7 @@ class HTML
 
   def page
     '<!doctype html>' +
-    html('data-color': ENV['COLOR'], 'data-direction': ENV['DIRECTION'], 'data-speed': ENV['SPEED']) {
+    html('data-color': ENV['COLOR'], 'data-direction': ENV['DIRECTION'], 'data-speed': ENV['SPEED'], 'data-invert': ENV['INVERT']) {
       head {
         meta(charset: 'utf-8') +
         meta('http-equiv' => 'X-UA-Compatible', content: 'IE=edge,chrome=1') +
