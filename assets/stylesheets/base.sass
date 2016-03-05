@@ -34,6 +34,13 @@ html
     color: black
     background-color: white
 
+  &[data-color='pink'] > body
+    color: white
+    background-color: pink
+  &[data-color='pink'][data-invert='true'] > body
+    color: pink
+    background-color: white
+
   &[data-direction='up'] .stage
     vertical-align: bottom
   &[data-direction='down'] .stage

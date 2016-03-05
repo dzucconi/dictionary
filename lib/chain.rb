@@ -2,7 +2,8 @@ class Chain
   CHAINS = {
     red: :verb,
     blue: :noun,
-    black: :adj
+    black: :adj,
+    pink: :adv
   }
 
   SOURCE = File.expand_path("../chain/data.#{CHAINS[ENV['COLOR'].to_sym]}", __FILE__)
