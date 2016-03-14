@@ -2,7 +2,7 @@ class Config
   @@config = {}
 
   def self.set(name, value)
-    @@config[name.to_sym] = value.to_sym
+    @@config[name.to_sym] = value&.to_sym
   end
 
   def self.get(name)
