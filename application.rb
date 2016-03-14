@@ -13,7 +13,7 @@ class Application < Sinatra::Base
     Config.set :invert, ENV['INVERT']
   end
 
-  get '/confg' do
+  get '/config' do
     Config.to_json
   end
 
