@@ -6,6 +6,10 @@ class Application < Sinatra::Base
 
   register Sinatra::AssetPipeline
 
+  get '/whoami' do
+    request.host
+  end
+
   get '/' do
     lines = Chain.take 20
 
