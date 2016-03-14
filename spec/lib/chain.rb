@@ -1,9 +1,19 @@
 require File.expand_path '../../../spec/spec_helper.rb', __FILE__
 
 describe 'Chain' do
+  before do
+    Config.set :color, :red
+  end
+
   describe '#color' do
     it 'returns the symbolized environment color' do
       Chain.color.must_equal :red
+    end
+  end
+
+  describe '#source' do
+    it 'returns the resolved path of the data file for configured color' do
+      Chain.source.must_include 'data.verb'
     end
   end
 
