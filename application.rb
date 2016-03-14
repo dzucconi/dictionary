@@ -6,8 +6,15 @@ class Application < Sinatra::Base
 
   register Sinatra::AssetPipeline
 
-  get '/whoami' do
-    request.host
+  before do
+    Config.set :color, Chain::DOMAINS[request.host] || ENV['COLOR']
+    Config.set :direction, ENV['DIRECTION']
+    Config.set :speed, ENV['SPEED']
+    Config.set :invert, ENV['INVERT']
+  end
+
+  get '/confg' do
+    Config.to_json
   end
 
   get '/' do
@@ -40,6 +47,6 @@ class Application < Sinatra::Base
   end
 
   get '/robots.txt', provides: :txt do
-    ['User-agent: *', 'Disallow:'].join("\n")
+    ['User-agent: *', 'Disallow:'].join "\n"
   end
 end

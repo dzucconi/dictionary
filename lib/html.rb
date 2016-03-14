@@ -17,7 +17,7 @@ class HTML
 
   def page
     '<!doctype html>' +
-    html('data-color': ENV['COLOR'], 'data-direction': ENV['DIRECTION'], 'data-speed': ENV['SPEED'], 'data-invert': ENV['INVERT']) {
+    html(Config.to_hash.reduce({}) { |memo, (key, value)| memo["data-#{key}"] = value; memo }) {
       head {
         meta(charset: 'utf-8') +
         meta('http-equiv' => 'X-UA-Compatible', content: 'IE=edge,chrome=1') +
@@ -25,10 +25,10 @@ class HTML
         meta(name: 'apple-mobile-web-app-capable', content: 'yes') +
         meta(name: 'apple-mobile-web-app-status-bar-style', content: 'black') +
 
-        title { "dictionary.#{ENV['COLOR']}" } +
+        title { "dictionary.#{Chain.color}" } +
 
-        link(rel: 'apple-touch-icon', href: image_path("#{ENV['COLOR']}.png")) +
-        link(rel: 'icon', href: image_path("#{ENV['COLOR']}.ico")) +
+        link(rel: 'apple-touch-icon', href: image_path("#{Chain.color}.png")) +
+        link(rel: 'icon', href: image_path("#{Chain.color}.ico")) +
         link(rel: 'stylesheet', type: 'text/css', href: stylesheet_path('application'))
       } +
       body {
