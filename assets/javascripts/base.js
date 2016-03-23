@@ -109,3 +109,10 @@
     run(DOM.$stage.attr('data-state', 'running'));
   });
 })();
+
+if (location.search.match('kiosk')) {
+  var minutes = 180; // 3 hours
+  setTimeout((function() {
+    return location.reload();
+  }), minutes * 60 * 1000);
+}
