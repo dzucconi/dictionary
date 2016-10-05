@@ -4,6 +4,13 @@ class Application < Sinatra::Base
   set :assets_css_compressor, :sass
   set :protection, except: [:frame_options]
 
+  use Rack::Cors do
+    allow do
+      origins  '*'
+      resource '*', headers: :any, methods: [:get, :post, :options]
+    end
+  end
+
   register Sinatra::AssetPipeline
 
   before do

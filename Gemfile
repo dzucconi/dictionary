@@ -8,6 +8,7 @@ gem 'compass'
 gem 'uglifier'
 gem 'sass'
 gem 'rubypants'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'tux'

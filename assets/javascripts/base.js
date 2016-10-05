@@ -20,7 +20,7 @@
   };
 
   function replenish() {
-    return $.getJSON('/verse', { n: 10 }).then(function(lines) {
+    return $.getJSON('/verse', { n: 50 }).then(function(lines) {
       QUEUE = QUEUE.concat(lines);
       return QUEUE;
     });
