@@ -1,0 +1,16 @@
+{
+  "name": "dictionary",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-data": "tsx scripts/prepare.ts",
+    "dev": "vite",
+    "build": "tsx scripts/prepare.ts && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "typescript": "^5",
+    "vite": "^6"
+  }
+}

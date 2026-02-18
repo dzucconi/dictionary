@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "unionregular";
+  src:
+    url("/fonts/union.woff2") format("woff2"),
+    url("/fonts/union.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fs: 40px;
+  --lh: 50px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --fs: 20px;
+    --lh: 25px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: white;
+  font-size: var(--fs);
+  font-family: "unionregular", sans-serif;
+  line-height: var(--lh);
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Color modes */
+html[data-color="red"] > body {
+  color: white;
+  background-color: red;
+}
+html[data-color="red"][data-invert="true"] > body {
+  color: red;
+  background-color: white;
+}
+
+html[data-color="blue"] > body {
+  color: white;
+  background-color: blue;
+}
+html[data-color="blue"][data-invert="true"] > body {
+  color: blue;
+  background-color: white;
+}
+
+html[data-color="black"] > body {
+  color: white;
+  background-color: black;
+}
+html[data-color="black"][data-invert="true"] > body {
+  color: black;
+  background-color: white;
+}
+
+html[data-color="pink"] > body {
+  color: black;
+  background-color: pink;
+}
+html[data-color="pink"][data-invert="true"] > body {
+  color: pink;
+  background-color: black;
+}
+
+/* Layout */
+.theatre {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: calc(var(--lh) * 1.5);
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .theatre {
+    padding: var(--lh);
+  }
+}
+
+html[data-direction="up"] .theatre {
+  justify-content: flex-end;
+}
+html[data-direction="down"] .theatre {
+  justify-content: flex-start;
+}
+
+.stage {
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.stage[data-state="running"] {
+  opacity: 1;
+}
+
+span {
+  display: block;
+  margin: var(--lh) 0;
+}
+
+span:first-child {
+  margin-top: 0;
+}
+
+span:last-child {
+  margin-bottom: 0;
+}
