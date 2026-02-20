@@ -6,11 +6,11 @@
 
 - **State**: production
 - **Production**:
-  - **URL**: `https://dictionary.blue`
-  - **URL**: `https://dictionary.red`
-  - **URL**: `https://dictionary.black`
-  - **URL**: `https://dictionary.pink`
-  - **URL**: `https://damonzucconi-dictionary.netlify.app` (fallback mode: `blue`)
+  - **URL**: https://dictionary.blue
+  - **URL**: https://dictionary.red
+  - **URL**: https://dictionary.black
+  - **URL**: https://dictionary.pink
+  - **URL**: https://damonzucconi-dictionary.netlify.app (fallback mode: `blue`)
 - **Host**: `https://app.netlify.com/projects/damonzucconi-dictionary/overview`
 - **Deploys**: pushes to your default branch auto-deploy to production. [Manually trigger a deploy](https://app.netlify.com/projects/damonzucconi-dictionary/deploys)
 
