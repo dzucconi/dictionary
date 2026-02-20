@@ -9,6 +9,30 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>dictionary</title>
+    <script>
+      (function () {
+        const host = location.hostname.toLowerCase().split(":")[0];
+        const params = new URLSearchParams(location.search);
+        const modeMap = {
+          "dictionary.red": "red",
+          "dictionary.blue": "blue",
+          "dictionary.black": "black",
+          "dictionary.pink": "pink",
+        };
+        const modeParam = params.get("mode");
+        const mode =
+          modeParam && ["red", "blue", "black", "pink"].includes(modeParam)
+            ? modeParam
+            : modeMap[host] || "blue";
+        const direction = params.get("direction");
+        const html = document.documentElement;
+        html.dataset.color = mode;
+        html.dataset.direction =
+          direction === "up" || direction === "down" ? direction : "up";
+        if (params.get("invert") === "true") html.dataset.invert = "true";
+        document.title = "dictionary." + mode;
+      })();
+    </script>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>

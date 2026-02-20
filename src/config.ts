@@ -31,7 +31,7 @@ const isDirection = (value: string): value is Direction =>
   value === "up" || value === "down";
 
 export const resolveMode = (hostname: string): Mode =>
-  DOMAIN_TO_MODE[hostname.toLowerCase().split(":")[0] ?? ""] ?? "red";
+  DOMAIN_TO_MODE[hostname.toLowerCase().split(":")[0] ?? ""] ?? "blue";
 
 const parseSpeed = (value: string | null): number => {
   const parsed = Number(value);
