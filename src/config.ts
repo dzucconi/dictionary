@@ -35,7 +35,7 @@ export const resolveMode = (hostname: string): Mode =>
 
 const parseSpeed = (value: string | null): number => {
   const parsed = Number(value);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : 50;
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 150;
 };
 
 export const resolveConfig = (

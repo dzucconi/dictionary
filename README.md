@@ -38,7 +38,7 @@ Build does two things:
 | ----------- | ----------------------------------------- | ------------------------ | -------------------------- |
 | `mode`      | Color/word-mode override                  | `red, blue, black, pink` | hostname / `blue` fallback |
 | `direction` | Text flow direction                       | `up, down`               | `up`                       |
-| `speed`     | Milliseconds-per-character timing factor  | `number`                 | `50`                       |
+| `speed`     | Milliseconds-per-character timing factor  | `number`                 | `150`                      |
 | `invert`    | Invert foreground/background color scheme | `true`                   | off                        |
 
 ## Domain-to-Mode Mapping
