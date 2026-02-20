@@ -34,6 +34,11 @@ body {
   overflow: hidden;
 }
 
+html.is-idle-cursor,
+html.is-idle-cursor * {
+  cursor: none !important;
+}
+
 body {
   color: white;
   font-size: var(--fs);

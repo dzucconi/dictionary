@@ -2,6 +2,7 @@ import { resolveConfig } from "./config.ts";
 import { createQueue } from "./data.ts";
 import { run } from "./display.ts";
 import { setFavicon } from "./favicon.ts";
+import { initializeInteractions } from "./interactions.ts";
 import "./style.css";
 
 const main = async (): Promise<void> => {
@@ -17,6 +18,7 @@ const main = async (): Promise<void> => {
 
   document.title = `dictionary.${config.mode}`;
   setFavicon(config.mode);
+  initializeInteractions();
 
   const stage = document.getElementById("stage");
   if (!stage) throw new Error("Missing #stage element");
