@@ -2,6 +2,34 @@
   command = "yarn build"
   publish = "dist"
 
+# www → matching bare domain
+
+[[redirects]]
+  from = "https://www.dictionary.black/*"
+  to = "https://dictionary.black/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.dictionary.blue/*"
+  to = "https://dictionary.blue/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.dictionary.pink/*"
+  to = "https://dictionary.pink/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.dictionary.red/*"
+  to = "https://dictionary.red/:splat"
+  status = 301
+  force = true
+
+# SPA fallback — must remain last
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
